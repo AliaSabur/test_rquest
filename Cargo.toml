@@ -1,0 +1,9 @@
+[package]
+name = "test_rquest"
+version = "0.1.0"
+edition = "2021"
+
+
+[dependencies]
+rquest = { version =  "0.26", features = ["json", "cookies", "stream","socks"]}
+tokio = { version = "1.41", features = ["full"] }
