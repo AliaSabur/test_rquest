@@ -1,16 +1,7 @@
 [target.x86_64-unknown-linux-musl]
-image = "messense/rust-musl-cross:x86_64-musl"
-pre-build = [
-    "set -x",
-    "dpkg --add-architecture $CROSS_DEB_ARCH",
-    "apt-get update && apt-get install build-essential cmake perl pkg-config libclang-dev musl-tools -y"
-]
+image = "ghcr.io/penumbra-x/rust-musl-cross:x86_64-unknown-linux-musl"
 
 [target.aarch64-unknown-linux-musl]
-image = "messense/rust-musl-cross:aarch64-musl"
-pre-build = [
-    "set -x",
-    "dpkg --add-architecture $CROSS_DEB_ARCH",
-    "apt-get update && apt-get install build-essential cmake perl pkg-config libclang-dev musl-tools -y"
-]
+image = "ghcr.io/penumbra-x/rust-musl-cross:aarch64-unknown-linux-musl"
+
 
