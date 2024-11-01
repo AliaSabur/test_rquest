@@ -5,3 +5,8 @@ image = "ghcr.io/penumbra-x/rust-musl-cross:x86_64-unknown-linux-musl"
 image = "ghcr.io/penumbra-x/rust-musl-cross:aarch64-unknown-linux-musl"
 
 
+
+docker run --rm -it --privileged \
+        -v $(pwd):/home/rust/src \
+        -v "$HOME"/.cargo/registry:/usr/local/cargo/registry \
+        ghcr.io/penumbra-x/rust-musl-cross:aarch64-unknown-linux-musl cargo build --release --verbose
