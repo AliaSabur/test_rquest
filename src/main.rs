@@ -1,12 +1,15 @@
-use rquest;
-use tokio;
+use rquest::{Client, Impersonate};
 
 #[tokio::main]
-async fn main() {
-    let url = "https://www.google.com";
-    let client = rquest::Client::new();
-    let res = client.get(url).send().await.unwrap();
-    println!("Status: {}", res.status());
+async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    // Build a client to impersonate Firefox135
+    let client = Client::builder()
+        .impersonate(Impersonate::Firefox135)
+        .build()?;
 
-    println!("Hello, world!");
+    // Use the API you're already familiar with
+    let resp = client.get("https://tls.peet.ws/api/all").send().await?;
+    println!("{}", resp.text().await?);
+
+    Ok(())
 }
